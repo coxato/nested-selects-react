@@ -4,7 +4,7 @@
   "description": "Made with create-react-library",
   "author": "carlosEdua",
   "license": "MIT",
-  "repository": "carlosEdua/nested-selects-react",
+  "repository": "https://github.com/carlosEdua/nested-selects-react.git",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
