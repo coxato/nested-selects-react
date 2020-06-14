@@ -1,0 +1,62 @@
+.menu-container{
+    background: rgb(255, 101, 45);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* overflow-y: auto; */
+    width: 250px;
+    /* position: absolute;
+    height: 100%;
+    z-index: 99; */
+    transition: .4s;
+    position: relative;
+}
+
+.menu-components-wrapper{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+
+.close-icon-container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px 25px;
+    position: relative;
+}
+
+.ver-en-github{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+    .close-icon-container div{
+        position: absolute;
+        left: 105%;
+    }
+
+.list-navlinks-container{
+    width: 100%;
+    padding: 10px;
+}
+
+.list-navlinks-container .list{
+    width: 100%;
+    color: black;
+}
+
+.list-navlinks-container .list-item{
+    color: black;
+    transition: .3s;
+}
+
+.list-navlinks-container .list-item:hover{
+    background: #d8d8d8;
+}
+
+.list-navlinks-container .list-item.is-active{
+    background: #404040;
+    color: white;
+}

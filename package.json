@@ -1,7 +1,7 @@
 {
   "name": "nested-selects-react",
-  "version": "1.0.0",
-  "description": "Made with create-react-library",
+  "version": "1.2.0",
+  "description": "A react component to manage nested <select> tags",
   "author": "carlosEdua",
   "license": "MIT",
   "repository": "https://github.com/carlosEdua/nested-selects-react.git",
@@ -11,6 +11,16 @@
   "engines": {
     "node": ">=10"
   },
+  "keywords": [
+    "nested-selects",
+    "nested",
+    "select",
+    "react",
+    "multiple-select",
+    "multi-select",
+    "react-select",
+    "trigger-options"
+  ],
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",

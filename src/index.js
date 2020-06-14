@@ -1,6 +1,14 @@
-import React from 'react'
-import styles from './styles.module.css'
+import Structure from './nestedSelectsReact/createStructure';
+import NestedSelects from './nestedSelectsReact/nestedSelectsReact.jsx';
+// components
+import Select from './components/select';
+import Option from './components/option';
+import MakeVisible from './components/makeVisible';
 
-export const ExampleComponent = ({ text }) => {
-  return <div className={styles.test}>Example Component: {text}</div>
-}
+export {
+    Structure,
+    NestedSelects,
+    Select,
+    Option,
+    MakeVisible
+  }

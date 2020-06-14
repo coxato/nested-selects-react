@@ -1,0 +1,142 @@
+#app-container{
+    display: flex;
+    min-height: 100vh;
+    background-color: #e8e8e8;
+}
+
+#app-content-wrapper{
+    padding: 75px 40px;
+    flex: 1;
+}
+
+.intro-form-container{
+    margin-bottom: 35px;
+}
+
+
+/* ***** code examples ***** */
+.copy-icon{
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    padding: 5px 10px;
+    background: #474747;
+    cursor: pointer;
+    border-radius: 10px;
+    opacity: 0;
+    transition: .2s;
+}
+
+pre:hover .copy-icon{
+    opacity: 1;
+}
+
+/* ***** portal ***** */
+.portal-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.copied-message-container{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.copied-message{
+    background: #ff652d;
+    padding: 10px;
+    border-radius: 5px;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    animation: ocultar 1.9s;
+}
+
+@keyframes ocultar{
+    0%{
+        opacity: 1;
+        bottom: -150px;
+    }
+    40%{
+        bottom: 50px;
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        bottom: 50px;
+    }
+}
+
+/* ***** nested-select-react styles ***** */
+.nsr-select-container select{
+    padding: 7px 5px;
+    border-radius: 4px;
+}
+
+.nsr-select-container label{
+    color: black;
+    font-weight: bold;
+}
+
+.nsr-principalSelect{
+    margin-bottom: 35px;
+    background: #efefef;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+/* 
+.nsr-principalSelect0,
+.nsr-principalSelect1,
+.nsr-principalSelect2{
+
+} */
+
+
+
+/* ===== bulma css resets ===== */
+.columns.direction-column{
+    flex-direction: column;
+}
+
+.direction-column .card{
+    margin-bottom: 40px;
+}
+
+.subtitle-v2{
+    text-align: center;
+    font-size: 20px;
+    color: #b93809;
+}
+
+.subtitle-v3{
+    /* text-align: center; */
+    font-size: 23px;
+    font-weight: bolder;
+    margin-top: 20px;
+}
+
+.btn-custom{
+    background: #ff7644;
+    border: 2px solid #ff7644;
+    color: black;
+    font-size: 18px;
+    transition: .3s;
+}
+
+.btn-custom:hover{
+    background: white;
+    border: 2px solid #ff7644;
+    color: #e24e19;
+}
+
+.tag:not(body){
+    background-color: #00000000;
+}
