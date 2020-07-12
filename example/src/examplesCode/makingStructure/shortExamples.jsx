@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NestedSelects, Select, Option, MakeVisible } from 'nested-selects-react';
 import FlagsComponent from '../componentsUse/ShowFlags/containers/showFlag';
 
@@ -65,12 +65,12 @@ function TwoSubSelects() {
             </Select>
         </NestedSelects>
     )
-}
+} 
 
 function SubComponents(){
     const log = data => console.log('NestedSelects values: ', data);
 
-    return(
+    return( 
         <NestedSelects getvalues={log}>
             {/* normal <Select> */}
             <Select name="mySelect" label="mySelect">
@@ -104,9 +104,52 @@ function SubComponents(){
     )
 }
 
+// ultimo ejemplo con todo lo de los select en la pagina 'creando la estructura'
+function MySubSelects() {
+
+    const [state, setState] = useState({});
+
+    const handleValues = data => {
+        console.log("the nestedSelectsValues:", state);
+
+        setState({
+            ...state,
+            nestedSelectsValues: {...data}
+        })
+    }
+
+    return(
+        <NestedSelects getvalues={handleValues} >
+    
+            {/* without nested */}
+            <Select name="mySelect1" id="mySelect1" label="this is mySelect1">
+                <Option value="opt-value1">option text 1</Option>
+                <Option value="opt-value2">option text 2</Option>
+            </Select>
+
+            {/* with just one nested <Select> */}
+            <Select name="mySelect2" id="mySelect2" label="this is mySelect2">
+                <Option value="opt-value1">option text 1</Option>
+                <Option value="opt-value2">
+                    option 2 trigger
+                    <MakeVisible>
+                        <Select name="mySelect2-nested" label="nested select!">
+                            <Option value="opt1">opt 1</Option>
+                            <Option value="opt2">opt 2</Option>
+                        </Select>
+                    </MakeVisible>
+                </Option>
+            </Select>
+
+        </NestedSelects>
+
+    )
+}
+
 export {
     NormalUse,
     OneSubSelect,
     TwoSubSelects,
     SubComponents,
+    MySubSelects
 }

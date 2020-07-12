@@ -1,3 +1,4 @@
+// import React, { cloneElement } from 'react';
 import Structure from '../nestedSelectsReact/createStructure';
 import './cycle';
 
@@ -69,7 +70,7 @@ class ParseChildren{
 
         // create the element node with the structure API
         elementNode = this.createElementNode(reactElement);
-        console.log(elementNode)
+        //console.log(elementNode)
         
         // check the type of the created node 
         if(elementNode.elementType === 'select'){
@@ -176,6 +177,7 @@ class ParseChildren{
 
         // principal selects
         for(let reactPrincipalSelect of nestedSelectReactchildren){
+            
             const { 
                 name, 
                 id, 
@@ -209,6 +211,9 @@ class ParseChildren{
             // save the select to principal selects
             this.principalSelects.push(select);
         }
+
+        console.log("EL OBJETO CIRCULAR", this.principalSelects);
+        
         
         // JSON.decycle './cycle.js' to get a plain javascript object
         let decycleObjectsArr = this.principalSelects.map( obj => JSON.decycle(obj) );

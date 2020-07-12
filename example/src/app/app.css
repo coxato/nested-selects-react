@@ -140,3 +140,7 @@ pre:hover .copy-icon{
 .tag:not(body){
     background-color: #00000000;
 }
+
+.content{
+    font-size: 18px;
+}

@@ -99,6 +99,7 @@ class NestedSelectsReact extends Component{
             for(let element of makeElementsVisible){
                 newElementsToDraw.push(this.makeStructureNode(element, selectName));
             }
+            
             // clean old subElements
             this.findAndRemoveSubElementsRecursively(this.elementsStructure, selectName);
             // insert new subElement in structure
@@ -468,7 +469,9 @@ class NestedSelectsReact extends Component{
         if(this.props.children){
             
             const childrenParser = new ParseChildren(this.props.children);
-            originalSelects = [...childrenParser.getParsedData()];             
+            originalSelects = [...childrenParser.getParsedData()];       
+            console.log(originalSelects);
+                  
         }
         // structure made with the API or handmade
         else if(this.props.selects){

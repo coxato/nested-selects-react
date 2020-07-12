@@ -88,30 +88,51 @@ const makingStructureExampleCode = {
 `,
 
     fullExample:
-`<NestedSelects getvalues={(values) => console.log(values) } >
+`
+import React, { useState } from 'react';
+import { NestedSelects, Select, Option, MakeVisible } from 'nested-selects-react';
+
+
+function MySubSelects() {
+
+    const [state, setState] = useState({});
+
+    const handleValues = data => {
+        console.log("the nestedSelectsValues:", state);
+
+        setState({
+            ...state,
+            nestedSelectsValues: {...data}
+        })
+    }
+
+    return(
+        <NestedSelects getvalues={handleValues} >
     
-      {/* without nested */}
-    <Select name="mySelect1" id="mySelect1" label="this is mySelect1">
-        <Option value="opt-value1">option text 1</Option>
-        <Option value="opt-value2">option text 2</Option>
-    </Select>
+            {/* without nested */}
+            <Select name="mySelect1" id="mySelect1" label="this is mySelect1">
+                <Option value="opt-value1">option text 1</Option>
+                <Option value="opt-value2">option text 2</Option>
+            </Select>
 
+            {/* with just one nested <Select> */}
+            <Select name="mySelect2" id="mySelect2" label="this is mySelect2">
+                <Option value="opt-value1">option text 1</Option>
+                <Option value="opt-value2">
+                    option 2 trigger
+                    <MakeVisible>
+                        <Select name="mySelect2-nested" label="nested select!">
+                            <Option value="opt1">opt 1</Option>
+                            <Option value="opt2">opt 2</Option>
+                        </Select>
+                    </MakeVisible>
+                </Option>
+            </Select>
 
-      {/* with just one nested <Select> */}
-    <Select name="mySelect2" id="mySelect2" label="this is mySelect2">
-        <Option value="opt-value1">option text 1</Option>
-        <Option value="opt-value2">
-            option text 2
-            <MakeVisible>
-                <Select>
-                    <Option value="opt1">opt 1</Option>
-                    <Option value="opt2">opt 2</Option>
-                </Select>
-            </MakeVisible>
-        </Option>
-    </Select>
+        </NestedSelects>
 
-</NestedSelects>
+    )
+}
 `
 }
 
@@ -134,15 +155,13 @@ function ThreeNestedSelects() {
             </Select>
             {/* father of 3 sub <Select> */}
             <Select name="fatherSubSelects" label="father of three sub <Select>">
-                <Option value="opt1">opt1</Option>
-                <Option value="opt2">
-                    opt2, hey select me!
+                <Option value="opt1">
+                    opt1 hey select me!!
                     <MakeVisible>
                         {/* nested 1 */}
                         <Select name="nested-1" label="nested 1">
-                            <Option value="opt1">opt1</Option>
-                            <Option value="opt2">
-                                opt2 Again, select me!
+                            <Option value="opt1">
+                                opt1 select me again!!
                                 <MakeVisible>
                                     {/* nested 2 */}
                                     <Select name="nested-2" label="nested 2">
@@ -153,14 +172,68 @@ function ThreeNestedSelects() {
                                                 {/* nested 3 */}
                                                 <Select name="nested-3" label="nested 3, the last.">
                                                     <Option value="opt1">opt1</Option>
-                                                    <Option value="opt1">opt2</Option>
+                                                    <Option value="opt2">opt2</Option>
                                                 </Select>
                                             </MakeVisible>
                                         </Option>
                                     </Select>
                                 </MakeVisible>
                             </Option>
+                            <Option value="opt2">
+                                normal option
+                            </Option>
                         </Select>
+                    </MakeVisible>
+                </Option>
+                <Option value="opt2">
+                    normal option
+                </Option>
+            </Select>
+        </NestedSelects> 
+    )
+}
+
+`,
+
+    subComponentsInsideMakeVisible:
+`
+import React from 'react';
+import { NestedSelects, Select, Option, MakeVisible } from 'nested-selects-react';
+// === change this with your custom or customs components ===
+import FlagsComponent from './ShowFlags/containers/showFlag';
+// ==============================================
+
+
+function SubComponents(){
+    const log = data => console.log('NestedSelects values: ', data);
+
+    return( 
+        <NestedSelects getvalues={log}>
+            {/* normal <Select> */}
+            <Select name="mySelect" label="mySelect">
+                <Option value="opt1">option 1</Option>
+                <Option value="opt2">option 2</Option>
+            </Select>
+
+            {/* <Select with sub components> */}
+            <Select name="mySelect2" label="mySelect2">
+                <Option value="opt1">opt1</Option>
+                <Option value="opt2">
+                    show various components
+                    <MakeVisible>
+
+                        {/* react tags */}
+                        <h1 className="title">Hi I'm a h1</h1>
+
+                        {/* components, put here yours React components!!!*/}
+                        <FlagsComponent />
+
+                        {/* if you want a sub-select, you can put it also */}
+                        <Select name="subSel" label="sub select showed with other components">
+                            <Option value="opt1">option 1</Option>
+                            <Option value="opt2">option 2</Option>
+                        </Select>
+
                     </MakeVisible>
                 </Option>
             </Select>

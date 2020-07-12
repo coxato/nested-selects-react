@@ -1,10 +1,12 @@
 import React from 'react';
 import ExampleCode from '../../components/commons/ExampleCode/exampleCode';
 import { makingStructureExampleCode } from '../exampleInText/allExamplesInText';
+import { MySubSelects } from './shortExamples';
 import { Link } from 'react-router-dom';
+import GoToStylePage from '../../components/commons/GoToStylePage/goToStylePage';
 
  
-function MakingStructure() {
+function MakingStructure() { 
 
     // simple code text example
     const { Select, Option, MakeVisible, NestedSelects, fullExample } = makingStructureExampleCode; 
@@ -85,10 +87,22 @@ function MakingStructure() {
                                 <br/>El primer {'<Select>'} es normal, pero el segundo {'<Select>'} tiene un {'<Select>'} anidado.
                             </p>
                             <ExampleCode codeText={fullExample} />
+                            
+                            <div className="card">
+                                <div className="card-content">
+                                    <div className="subtitle">con el código anterior obtienes lo siguiente:</div>
+                                    <MySubSelects />
+                                </div>
+                            </div>
                         </div>
 
+
                     </div>
+                    
                 </div>
+                
+                <GoToStylePage />
+            
             </div>
         </div>
     )
