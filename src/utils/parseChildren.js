@@ -1,4 +1,3 @@
-// import React, { cloneElement } from 'react';
 import Structure from '../nestedSelectsReact/createStructure';
 import './cycle';
 
@@ -11,7 +10,7 @@ class ParseChildren{
         this.struct = new Structure();
     }
 
-
+ 
 
     // este metodo analiza una <Option/> ó una optionNode{} a la vez
     // para ver si dicha opción tiene sub-elementos
@@ -23,7 +22,7 @@ class ParseChildren{
             let { value, children } = reactOptionChildren.props;
             let text, makeVisibleChildren ;
             // the option have 2 or more children
-            if(children instanceof Array){
+            if( Array.isArray(children) ){
                 text = children[0];
                 makeVisibleChildren = children[1].props.children;
             }
@@ -32,15 +31,21 @@ class ParseChildren{
             // make option
             let option = this.struct.makeElement('option', { value, text });
             // the option have 2 children, text and <MakeVisible>
-            if(children instanceof Array){
+            if( Array.isArray(children) ){
                 // have multiple children inside <MakeVisible>
-                if(makeVisibleChildren instanceof Array){
+                if( Array.isArray(makeVisibleChildren) ){
                     for(let element of makeVisibleChildren){
+                        // decycle json
+                        element = JSON.decycle(element);
                         this.checkTypeOfChildrenComponents(element, option);
                     }
                 }
-                // have multiple children inside <MakeVisible>
-                else this.checkTypeOfChildrenComponents(makeVisibleChildren, option);
+                // have just one child inside <MakeVisible>
+                else {
+                    // decycle json
+                    makeVisibleChildren = JSON.decycle(makeVisibleChildren);
+                    this.checkTypeOfChildrenComponents(makeVisibleChildren, option);
+                }
 
             }
     
@@ -70,7 +75,7 @@ class ParseChildren{
 
         // create the element node with the structure API
         elementNode = this.createElementNode(reactElement);
-        //console.log(elementNode)
+        
         
         // check the type of the created node 
         if(elementNode.elementType === 'select'){
@@ -78,9 +83,18 @@ class ParseChildren{
             optionNode.makeVisible.push( elementNode );
             // convertir cada <Option/> en un objeto option, con ayuda de la API
             reactSelectOptions = reactElement.props.children;
-            for(let opt of reactSelectOptions){
-                opts.push( this.createElementNode(opt) )
+
+            // have 2 or more options
+            if( Array.isArray(reactSelectOptions) ){
+                for(let opt of reactSelectOptions){
+                    opts.push( this.createElementNode(opt) )
+                }
             }
+            // just 1 option
+            else {
+                opts.push( this.createElementNode(reactSelectOptions))
+            }
+
             // asociar opciones al sub-select
             elementNode.options = opts;
             
@@ -89,7 +103,8 @@ class ParseChildren{
                 // si una de las opciones tiene más de un hijo
                 // es porque tiene un <MakeVisible/>
                 
-                if(reactSelectOptions[i].props.children instanceof Array){
+                const optionChildren = Array.isArray(reactSelectOptions) ? reactSelectOptions[i] : reactSelectOptions; 
+                if(optionChildren.props.children instanceof Array){
                     optChildren = reactSelectOptions[i].props.children; 
                     makeVisibleComponentChildren = optChildren[1].props.children;
                     // iterar por cada uno de los componentes hijos de <MakeVisible/>
@@ -169,6 +184,7 @@ class ParseChildren{
     getParsedData(){
         
         let nestedSelectReactchildren;
+
         if(this.nestedSelectReactchildren instanceof Array)
             nestedSelectReactchildren = this.nestedSelectReactchildren; 
         else
@@ -199,10 +215,16 @@ class ParseChildren{
      
             // loop each <Option/> and its sub-elements
             let options = [];
-            for(let reactOptionChild of reactOptionsChildren){
-                options.push( this.findSubElementsInEachOption(reactOptionChild) );
-            };
 
+            if( Array.isArray(reactOptionsChildren) ){
+                
+                for(let reactOptionChild of reactOptionsChildren){
+                    options.push( this.findSubElementsInEachOption(reactOptionChild) );
+                };
+            } 
+            else{
+                options.push(this.findSubElementsInEachOption(reactOptionsChildren));
+            }
             
             // add options to current principalSelect
             this.struct.addOptionsToSelect(select, options);
@@ -210,17 +232,19 @@ class ParseChildren{
 
             // save the select to principal selects
             this.principalSelects.push(select);
+
         }
 
-        console.log("EL OBJETO CIRCULAR", this.principalSelects);
+        
         
         
         // JSON.decycle './cycle.js' to get a plain javascript object
-        let decycleObjectsArr = this.principalSelects.map( obj => JSON.decycle(obj) );
+        // let decycleObjectsArr = this.principalSelects.map( obj => JSON.decycle(obj) );
 
            
         // parsed components
-        return decycleObjectsArr;
+        // return decycleObjectsArr;
+        return this.principalSelects;
     }
 
 

@@ -57,7 +57,7 @@ class NestedSelectsReact extends Component{
         
         // ***** guardar datos del <select> seleccionado *****
         // delete childs values
-        this.STOREDATA = deleteOldSelectStoreData(selectName, this.STOREDATA);
+        this.STOREDATA = deleteOldSelectStoreData(id || selectName, this.STOREDATA);
         // save selected value in the storage <<selectStoreData>>
         this.STOREDATA[id || selectName].nodeData = value;
 
@@ -77,7 +77,7 @@ class NestedSelectsReact extends Component{
             customchange(
                     value, 
                     (selectName, ...elementsArrayObjects) => {                    
-                        this.insertElementsCustomOnChange(selectName, ...elementsArrayObjects);
+                        this.insertElementsCustomOnChange(id || selectName, ...elementsArrayObjects);
                 });
             // return <select> and <Components> values to <NestedSelects/> parent element
             this.props.getvalues( parse(this.STOREDATA) );
@@ -470,7 +470,6 @@ class NestedSelectsReact extends Component{
             
             const childrenParser = new ParseChildren(this.props.children);
             originalSelects = [...childrenParser.getParsedData()];       
-            console.log(originalSelects);
                   
         }
         // structure made with the API or handmade

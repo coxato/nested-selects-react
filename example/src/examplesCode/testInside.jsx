@@ -13,30 +13,27 @@ function TestInside(){
  
 
                 <Select name="select3" id="select3" >
-                    <Option value="hey">holas</Option>
-                    <Option value="wow2">
-                        otra opcion
+                    <Option value="hey">
+                        opt 1
                         <MakeVisible>
-                            <Select name="last-select">
-                                <Option value="sfasfd">ijioajosij</Option>
-                                <Option value="sssfasfd">
-                                    ijioajosiasdj
+                            <h1>hola soy un titulo</h1>
+                            <div className="card has-background-primary p-3">
+                                <div className="title">soy una tarjeta</div>
+                            </div>
+                            <Select name="nested" label="fist nested">
+                                <Option value="n-1">nested 1</Option>
+                                <Option value="n-2">
+                                    nested 2
                                     <MakeVisible>
-                                        <Select name="super-last">
-                                            <Option value="opt1">qwerty</Option>
-                                            <Option value="opt1">ytrewq</Option>
-                                        </Select>
-                                        <Select name="super-last-2">
-                                            <Option value="opt1">
-                                                qwerty
-                                            </Option>
-                                            <Option value="opt1">ytrewq</Option>
-                                        </Select>
+                                        <div className="form card">
+                                            ola ka se
+                                        </div>
                                     </MakeVisible>
                                 </Option>
                             </Select>
                         </MakeVisible>
                     </Option>
+                    <Option value="hey2">opt 2</Option>
                 </Select>
 
             </NestedSelects>

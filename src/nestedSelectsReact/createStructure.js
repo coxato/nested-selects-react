@@ -44,7 +44,7 @@ class ElementsStructure{
         }
         // mandatory {name: value} is not valid
         else{
-            throw new Error('the \'name\' property is mandatory. Error with the selectObject');
+            throw new Error('the \'name\' property is mandatory. You can also use the \'id\' property. Error with the (<Select>|selectObject)');
         }
     
     }
@@ -228,7 +228,7 @@ class ElementsStructure{
     _verifyKeysAndValues(objectType, objNode){
         if(objectType === 'selectObject'){
             // check name key 
-            return objNode['name'] ? true : false;
+            return objNode['name'] || objNode['id'] ? true : false;
         }
         else if(objectType === 'optionsArray'){
             //  optionsArray
