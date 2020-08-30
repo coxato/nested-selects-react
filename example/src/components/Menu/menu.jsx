@@ -49,9 +49,6 @@ function Menu(){
                         <NavLink to="/including-sub-components" className="list-item" activeClassName="is-active">
                             Incluyendo <br/> sub-componentes
                         </NavLink>
-                        <NavLink to="/async" className="list-item" activeClassName="is-active">
-                            Código asíncrono
-                        </NavLink>
                         <NavLink to="/custom-onchange" className="list-item" activeClassName="is-active">
                             Custom onChange
                         </NavLink>

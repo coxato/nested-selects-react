@@ -55,7 +55,6 @@ function ThreeNestedSelects() {
     )
 }
 
-const H1 = () => <h1 className="title">Hi I'm a h1</h1>;
 
 
 function SubComponents(){
@@ -77,46 +76,16 @@ function SubComponents(){
                     <MakeVisible>
 
                         {/* react tags */}
-                        
-                        <Select name="mySelect11" label="mySelect11">
-                            <Option value="opt1">option 1</Option>
-                            <Option value="opt2">option 2</Option>
-                        </Select>
-
-                        <Select name="mySelect22" label="mySelect22">
-                            <Option value="opt1">option 1</Option>
-                            <Option value="opt2">option 2</Option>
-                        </Select>
-
-                        <Select name="mySelect33" label="mySelect33">
-                            <Option value="opt1">option 1</Option>
-                            <Option value="opt2">option 2
-                                <MakeVisible>
-                                    <Select name="sub1" label="sub1">
-                                        <Option value="opt1">option 1</Option>
-                                        <Option value="opt2">option 2</Option>
-                                    </Select>
-                                    <Select name="sub2" label="sub2">
-                                        <Option value="opt1">option 1</Option>
-                                        <Option value="opt2">option 2</Option>
-                                    </Select>
-                                    <Select name="sub3" label="sub3">
-                                        <Option value="opt1">option 1</Option>
-                                        <Option value="opt2">option 2</Option>
-                                    </Select>
-
-                                    
-                                </MakeVisible>
-                            </Option>
-                        </Select>
-
-                        <FlagsComponent />
+                        <h1 className="title">Hi I'm a h1</h1>
 
                         {/* components, put here yours React components!!!*/}
-                        
+                        <FlagsComponent />
 
                         {/* if you want a sub-select, you can put it also */}
-                        
+                        <Select name="subSel" label="sub select showed with other components">
+                            <Option value="opt1">option 1</Option>
+                            <Option value="opt2">option 2</Option>
+                        </Select>
 
                     </MakeVisible>
                 </Option>

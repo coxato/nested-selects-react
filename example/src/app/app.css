@@ -92,6 +92,75 @@ pre:hover .copy-icon{
     padding: 5px 10px;
     border-radius: 5px;
 }
+
+/* reset styles only for style example */
+.without-style .nsr-select-container select,
+.custom-style .nsr-select-container select{
+    padding: 0;
+    border-radius: 0;
+}
+
+.without-style .nsr-select-container label,
+.custom-style .nsr-select-container label{
+    color: black;
+    font-weight: inherit;
+}
+
+.without-style .nsr-principalSelect,
+.custom-style .nsr-principalSelect{
+    margin-bottom: 0;
+    background: none;
+    padding: 0;
+    border-radius: 0;
+}
+
+/* custom estyles only for style example */
+.custom-style .nsr{
+    background-color: darkorchid;
+    padding: 25px;
+}
+
+.custom-style .nsr-principalSelect{
+    background-color: royalblue;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.custom-style .nsr-select-container{
+    background-color: darkred;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.custom-style .nsr-select-container .nsr-label{
+    color: white;
+    font-weight: bolder;
+}
+
+.custom-style .nsr-container .nsr-sub-select{
+    background-color: yellow;
+}
+
+.custom-style.selects-styles .nsr-container select{
+    padding: 7px 12px;
+    border: 4px dotted fuchsia;
+}
+
+
+.class-color{
+    width: 20px;
+    height: 20px;
+    margin-left: 20px;
+}
+
+.class-colors li{
+    background-color: #e7e7e7;
+    display: flex;
+    align-items: center;
+    border: 1px solid;
+    font-weight: bolder;
+}
+
 /* 
 .nsr-principalSelect0,
 .nsr-principalSelect1,

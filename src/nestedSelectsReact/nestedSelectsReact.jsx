@@ -483,7 +483,15 @@ class NestedSelectsReact extends Component{
                 'you have to pass the structure by selects prop <NestedSelects selects={structArr} />\n' +
                 'or use nested-selects-react components as children of <NestedSelects>{children}</NestedSelects> \n'
             );        
-        }        
+        }     
+        
+        if(!this.props.getvalues){
+            throw new Error(
+                'getvalues callback not provided \n' +
+                'you have to pass the getvalues callback: <NestedSelects getvalues={myCallback} />\n' +
+                'this is necessary so that you can get the values ​​inside NestedSelects \n'
+            );
+        }
         
         // prepare the initials <select/>
         for(let select of originalSelects){
@@ -522,8 +530,8 @@ class NestedSelectsReact extends Component{
         if(loading) return null;
 
         return (
-            <div className="nestedselects-super-container">
-                <div className="nestedselects-container">
+            <div className="nsr-container">
+                <div className="nsr">
                     { principalSelects.map( (element, index) => {
                         return( 
                             <div key={index} className={`nsr-principalSelect nsr-principalSelect${index}`}>
