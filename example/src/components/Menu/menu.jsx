@@ -50,7 +50,7 @@ function Menu(){
                             Incluyendo <br/> sub-componentes
                         </NavLink>
                         <NavLink to="/custom-onchange" className="list-item" activeClassName="is-active">
-                            Custom onChange
+                            Custom onChange y código asíncrono
                         </NavLink>
                         <NavLink to="/styles" className="list-item" activeClassName="is-active">
                             Estilos

@@ -3,6 +3,10 @@ import { Select, Option, MakeVisible, NestedSelects } from 'nested-selects-react
 
 function TestInside(){
 
+    const handleCustomChange = (value, insertElement) => {
+        console.log('the value is ' + value, insertElement);
+    }
+
     return(
         <div className="container">
             <NestedSelects getvalues={(data) => console.log(data)}>
@@ -12,7 +16,7 @@ function TestInside(){
                 </Select>
  
 
-                <Select name="select3" id="select3" >
+                <Select name="select3" id="select3" customchange={handleCustomChange} >
                     <Option value="hey">
                         opt 1
                         <MakeVisible>

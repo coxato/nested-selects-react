@@ -10,6 +10,7 @@ import Introduction from '../examplesCode/introduction/intro';
 import GetStarted from '../examplesCode/getStarted/index';
 import MakingStructure from '../examplesCode/makingStructure/index';
 import SubComponents from '../examplesCode/componentsUse/index';
+import CustomOnChange from '../examplesCode/customOnChange/index';
 import Styles from '../examplesCode/stylesUse';
 import TestInside from '../examplesCode/testInside';
 
@@ -34,6 +35,7 @@ function App(){
                         <Route exact path="/structure" component={MakingStructure} />
                         <Route exact path="/including-sub-components" component={SubComponents} />   
                         <Route exact path="/styles" component={Styles}  />
+                        <Route exact path="/custom-onchange" component={CustomOnChange}  />
                         <Route exact path="/test" component={TestInside}  />
                     </Switch>
                 </div>
