@@ -14,8 +14,7 @@ install with yarn:
 yarn add nested-selects-react
 ```
 
-## Demo and docs
-url...
+## [Demo and docs](https://carlosedua.github.io/nested-selects-react/)
 
 ### in case you want to use it fast
 ```JSX
@@ -69,7 +68,7 @@ export default MyForm;
 
 nested-selects-react comes without styles.
 If you want to add styles please check docs. it's very easy
-url...
+## [Demo and docs](https://carlosedua.github.io/nested-selects-react/)
 ## License
 
 MIT © [carlosEdua](https://github.com/carlosEdua)
