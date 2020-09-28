@@ -14,6 +14,7 @@ import CustomOnChange from '../examplesCode/customOnChange/index';
 import Styles from '../examplesCode/stylesUse';
 import TestInside from '../examplesCode/testInside';
 
+import { url } from '../url';
 // app menu
 import Menu from '../components/Menu/menu';
 // style
@@ -24,7 +25,7 @@ import './app.css';
 function App(){
     return(
         <div id="app-container">
-            <BrowserRouter>
+            <BrowserRouter basename={url}>
 
                 <Menu />
 
@@ -36,7 +37,7 @@ function App(){
                         <Route exact path="/including-sub-components" component={SubComponents} />   
                         <Route exact path="/styles" component={Styles}  />
                         <Route exact path="/custom-onchange" component={CustomOnChange}  />
-                        <Route exact path="/test" component={TestInside}  />
+                        {/* <Route exact path="/test" component={TestInside}  /> */}
                     </Switch>
                 </div>
 

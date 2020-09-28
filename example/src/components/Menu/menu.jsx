@@ -23,11 +23,11 @@ function Menu(){
 
                 <div className="ver-en-github">
                     <GitHubButton 
-                        href="https://github.com/carlosedua/nestedSelectsReact" 
+                        href="https://github.com/carlosEdua/nested-selects-react" 
                         data-icon="octicon-star" 
                         data-size="large" 
                         data-show-count="true" 
-                        aria-label="Star carlosedua/nestedSelectsReact on GitHub">
+                        aria-label="Star carlosEdua/nested-selects-react on GitHub">
                             Star
                     </GitHubButton>
                 </div>
@@ -55,9 +55,9 @@ function Menu(){
                         <NavLink to="/styles" className="list-item" activeClassName="is-active">
                             Estilos
                         </NavLink>
-                        <NavLink to="/test" className="list-item" activeClassName="is-active">
+                        {/* <NavLink to="/test" className="list-item" activeClassName="is-active">
                             test
-                        </NavLink>
+                        </NavLink> */}
                     </div>
                 </div>
 
