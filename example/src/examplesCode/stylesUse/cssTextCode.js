@@ -1,4 +1,4 @@
-module.exports = {
+const cssTextCode = {
     nativeClasses:
 `
 .nsr{
@@ -36,3 +36,6 @@ module.exports = {
 }
 `
 };
+
+export const { nativeClasses, specificElements } = cssTextCode;
+export default cssTextCode;

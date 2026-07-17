@@ -1,6 +1,8 @@
 import React, { Component, cloneElement } from 'react';
 // functional components
 import { MakeSelect } from './functionalComponents';
+// built in components
+import Select from '../components/select';
 // api
 import UserAPI from './createStructure';
 // utils
@@ -211,7 +213,8 @@ class NestedSelectsReact extends Component{
             else{
                 // si es un elemento <Select> hecho con los componentes build in, 
                 // NOTA: con build in me refiero a los componentes dentro de la carpeta 'src/components'  
-                if(element.props && /\bSelect\b/.test(element.type.name)){
+                // NOTE: compared by reference, component names don't survive consumers' minifiers
+                if(element.props && element.type === Select){
                     // si es un build in <Select> se supone que ya tiene nombre o id unicos
                     elementName = element.props.id || element.props.name;
                     const parser = new ParseChildren([element]);
@@ -462,7 +465,9 @@ class NestedSelectsReact extends Component{
     // además de encontrar y guardar los react components en el objeto componentsReferences{} para luego
     // referenciarlos en dicha estructura. 
     componentDidMount(){
-        let { htmlToDraw } = this.state;
+        // start from an empty array (not state) so a remount (e.g. React StrictMode)
+        // doesn't duplicate the selects
+        let htmlToDraw = [];
         let originalSelects;
 
         // structure made with children components

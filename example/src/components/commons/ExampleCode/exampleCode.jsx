@@ -3,7 +3,7 @@ import Prism from 'prismjs';
 import ClipBoard from '../ClipBoard/clipBoard';
 // styles
 import '../../../globalStyles/prism.css';
-require('prismjs/components/prism-jsx'); // auto run
+import 'prismjs/components/prism-jsx'; // auto run
 
 function ExampleCode({ codeText, lang = 'jsx' }) {
 

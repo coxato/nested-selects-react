@@ -1,35 +1,24 @@
 {
   "name": "nested-selects-react-example",
-  "homepage": ".",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "start": "node ../node_modules/react-scripts/bin/react-scripts.js start",
-    "build": "node ../node_modules/react-scripts/bin/react-scripts.js build",
-    "test": "node ../node_modules/react-scripts/bin/react-scripts.js test",
-    "eject": "node ../node_modules/react-scripts/bin/react-scripts.js eject"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "react": "link:../node_modules/react",
-    "react-dom": "link:../node_modules/react-dom",
-    "react-scripts": "link:../node_modules/react-scripts",
-    "nested-selects-react": "link:../"
+    "nested-selects-react": "link:..",
+    "prismjs": "^1.30.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-github-btn": "^1.4.0",
+    "react-phone-number-input": "^3.4.12",
+    "react-router-dom": "^7.9.0"
   },
   "devDependencies": {
-    "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
-    "prismjs": "^1.20.0",
-    "react-github-btn": "^1.2.0",
-    "react-phone-number-input": "^3.0.23",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+    "@vitejs/plugin-react": "^5.0.0",
+    "vite": "^7.1.0"
+  }
 }

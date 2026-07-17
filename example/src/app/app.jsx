@@ -2,7 +2,7 @@ import React from 'react';
 import {
     BrowserRouter,
     Route,
-    Switch
+    Routes
 } from 'react-router-dom';
 
 // examples code
@@ -12,7 +12,6 @@ import MakingStructure from '../examplesCode/makingStructure/index';
 import SubComponents from '../examplesCode/componentsUse/index';
 import CustomOnChange from '../examplesCode/customOnChange/index';
 import Styles from '../examplesCode/stylesUse';
-import TestInside from '../examplesCode/testInside';
 
 import { url } from '../url';
 // app menu
@@ -30,15 +29,14 @@ function App(){
                 <Menu />
 
                 <div id="app-content-wrapper">
-                    <Switch>
-                        <Route exact path="/" component={Introduction}  />
-                        <Route exact path="/get-started" component={GetStarted}  />
-                        <Route exact path="/structure" component={MakingStructure} />
-                        <Route exact path="/including-sub-components" component={SubComponents} />   
-                        <Route exact path="/styles" component={Styles}  />
-                        <Route exact path="/custom-onchange" component={CustomOnChange}  />
-                        {/* <Route exact path="/test" component={TestInside}  /> */}
-                    </Switch>
+                    <Routes>
+                        <Route path="/" element={<Introduction />} />
+                        <Route path="/get-started" element={<GetStarted />} />
+                        <Route path="/structure" element={<MakingStructure />} />
+                        <Route path="/including-sub-components" element={<SubComponents />} />
+                        <Route path="/styles" element={<Styles />} />
+                        <Route path="/custom-onchange" element={<CustomOnChange />} />
+                    </Routes>
                 </div>
 
             </BrowserRouter>

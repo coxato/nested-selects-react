@@ -1,5 +1,7 @@
 import Structure from '../nestedSelectsReact/createStructure';
-import './cycle';
+import Select from '../components/select';
+import Option from '../components/option';
+import { decycle } from './cycle';
 
 // parse react childrens
 class ParseChildren{
@@ -36,14 +38,14 @@ class ParseChildren{
                 if( Array.isArray(makeVisibleChildren) ){
                     for(let element of makeVisibleChildren){
                         // decycle json
-                        element = JSON.decycle(element);
+                        element = decycle(element);
                         this.checkTypeOfChildrenComponents(element, option);
                     }
                 }
                 // have just one child inside <MakeVisible>
                 else {
                     // decycle json
-                    makeVisibleChildren = JSON.decycle(makeVisibleChildren);
+                    makeVisibleChildren = decycle(makeVisibleChildren);
                     this.checkTypeOfChildrenComponents(makeVisibleChildren, option);
                 }
 
@@ -143,30 +145,30 @@ class ParseChildren{
     // returns { elementNode: Object }
     createElementNode(reactElement){
         let elementNode;
-        const name = reactElement.type.name; 
-        // is a <Select> or a <Option> or a custom react component like '<MyComponent />'
-        if(name){
-            if(name === "Select"){
-                
-                elementNode = this.struct.makeElement('select', {...reactElement.props}  )
-            }
-            else if(name === 'Option'){
-                elementNode = this.struct.makeElement('option', {...reactElement.props}  )
-                // <Option> text
-                if(typeof reactElement.props.children === "string"){
-                    elementNode.text = reactElement.props.children;
-                }
-                else{
-                    elementNode.text = reactElement.props.children[0];
-                }
+        const name = reactElement.type.name;
+        // is a <Select> made with the built in components
+        // NOTE: compared by reference, component names don't survive consumers' minifiers
+        if(reactElement.type === Select){
+            elementNode = this.struct.makeElement('select', {...reactElement.props}  )
+        }
+        // is an <Option> made with the built in components
+        else if(reactElement.type === Option){
+            elementNode = this.struct.makeElement('option', {...reactElement.props}  )
+            // <Option> text
+            if(typeof reactElement.props.children === "string"){
+                elementNode.text = reactElement.props.children;
             }
             else{
-                elementNode = this.struct.makeElement('component', {
-                    // name: reactElement.type.name + '-' + Math.random(), // random name,
-                    name: reactElement.type.name,
-                    component: reactElement
-                });
+                elementNode.text = reactElement.props.children[0];
             }
+        }
+        // is a custom react component like '<MyComponent />'
+        else if(name){
+            elementNode = this.struct.makeElement('component', {
+                // name: reactElement.type.name + '-' + Math.random(), // random name,
+                name: reactElement.type.name,
+                component: reactElement
+            });
         }
         // is a default react component like <h1>, <p>, <a>, <div>, etc
         else{

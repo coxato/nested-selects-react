@@ -5,6 +5,8 @@ import GitHubButton from 'react-github-btn';
 
 import './menu.css';
 
+// react-router v7 NavLink has no activeClassName prop
+const navLinkClass = ({ isActive }) => `list-item${isActive ? ' is-active' : ''}`;
 
 function Menu(){
 
@@ -34,28 +36,28 @@ function Menu(){
 
                 <div className="list-navlinks-container">
                     <div className="list is-hoverable has-text-centered">
-                        <NavLink exact to="/" className="list-item" activeClassName="is-active">
+                        <NavLink end to="/" className={navLinkClass}>
                             Introducción - Demo
                         </NavLink>
-                        <NavLink exact to="/get-started" className="list-item" activeClassName="is-active">
+                        <NavLink end to="/get-started" className={navLinkClass}>
                             Empieza a usarlo
                         </NavLink>
-                        <NavLink to="/structure" className="list-item" activeClassName="is-active">
+                        <NavLink to="/structure" className={navLinkClass}>
                             Creando la estructura
                         </NavLink>
-                        {/* <NavLink to="/basic-example" className="list-item" activeClassName="is-active">
+                        {/* <NavLink to="/basic-example" className={navLinkClass}>
                             Ejemplo básico
                         </NavLink> */}
-                        <NavLink to="/including-sub-components" className="list-item" activeClassName="is-active">
+                        <NavLink to="/including-sub-components" className={navLinkClass}>
                             Incluyendo <br/> sub-componentes
                         </NavLink>
-                        <NavLink to="/custom-onchange" className="list-item" activeClassName="is-active">
+                        <NavLink to="/custom-onchange" className={navLinkClass}>
                             Custom onChange y código asíncrono
                         </NavLink>
-                        <NavLink to="/styles" className="list-item" activeClassName="is-active">
+                        <NavLink to="/styles" className={navLinkClass}>
                             Estilos
                         </NavLink>
-                        {/* <NavLink to="/test" className="list-item" activeClassName="is-active">
+                        {/* <NavLink to="/test" className={navLinkClass}>
                             test
                         </NavLink> */}
                     </div>
