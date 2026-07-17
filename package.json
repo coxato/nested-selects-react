@@ -2,11 +2,11 @@
   "name": "nested-selects-react",
   "version": "2.0.0",
   "description": "A react component to manage nested <select> tags",
-  "author": "coxato",
+  "author": "carlosEdua",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/coxato/nested-selects-react.git"
+    "url": "git+https://github.com/carlosEdua/nested-selects-react.git"
   },
   "type": "module",
   "main": "./dist/index.cjs",
