@@ -1,27 +1,25 @@
 import React from 'react';
+import ReactCountryFlag from 'react-country-flag';
+import { COUNTRIES } from '../countries';
 import './style.css';
 
-const SelectFlag = ({country, flagURL, onChangeHandler}) => (
+const SelectFlag = ({country, onChangeHandler}) => (
 
     <div className="SelectFlag-container">
 
         <select onChange={onChangeHandler}>
             <option value="">Select a country</option>
-            <option value="argentina">Argentina</option>
-            <option value="brazil">Brazil</option>
-            <option value="colombia">Colombia</option>
-            <option value="chile">Chile</option>
-            <option value="mexico">México</option>
-            <option value="usa">United States</option>
-            <option value="venezuela">Venezuela</option>
+            {COUNTRIES.map(({code, name}) => (
+                <option key={code} value={code}>{name}</option>
+            ))}
         </select>
 
         {
-            flagURL
+            country
             ?
             <div className="flag_and_name-container">
-                <img src={flagURL} alt={`${country} flag`} width="300"/>
-                <p>{country}</p>
+                <ReactCountryFlag countryCode={country.code} svg style={{width: '100px', height: '100px'}} aria-label={`${country.name} flag`}/>
+                <p>{country.name}</p>
             </div>
             :
             <h2>Please select a country first</h2>

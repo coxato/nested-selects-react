@@ -12,6 +12,7 @@
     "nested-selects-react": "link:..",
     "prismjs": "^1.30.0",
     "react": "^19.2.0",
+    "react-country-flag": "^3.1.0",
     "react-dom": "^19.2.0",
     "react-github-btn": "^1.4.0",
     "react-phone-number-input": "^3.4.12",
